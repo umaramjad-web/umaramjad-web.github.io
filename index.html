@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umar Amjad — Web Developer</title>
+<meta name="description" content="Umar Amjad is a web developer who builds fast, responsive and modern websites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d12; --bg2:#12151d; --card:#161a24; --line:#232838;
+    --text:#e8eaf0; --muted:#9aa1b2; --accent:#7c5cff; --accent2:#22d3ee;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.15}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:10;background:rgba(11,13,18,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:"Space Grotesk";font-weight:700;font-size:1.2rem}
+  .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav ul a{color:var(--muted);font-size:.95rem;transition:color .2s}
+  nav ul a:hover{color:var(--text)}
+
+  /* Hero */
+  .hero{padding:110px 0 90px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;width:520px;height:520px;right:-120px;top:-80px;
+    background:radial-gradient(circle,rgba(124,92,255,.35),transparent 65%);filter:blur(20px);z-index:-1}
+  .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:.85rem;margin-bottom:24px}
+  .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e}
+  .hero h1{font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:20px}
+  .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);font-size:1.15rem;max-width:580px;margin-bottom:36px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:13px 26px;border-radius:10px;font-weight:500;transition:transform .2s,background .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-main{background:var(--accent);color:#fff}
+  .btn-ghost{border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--card)}
+
+  /* Sections */
+  section{padding:80px 0}
+  .label{color:var(--accent2);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+  section h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:40px}
+
+  /* About */
+  .about{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+  .about p{color:var(--muted);margin-bottom:16px;font-size:1.05rem}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .stat b{font-family:"Space Grotesk";font-size:2rem;display:block}
+  .stat span{color:var(--muted);font-size:.9rem}
+
+  /* Skills */
+  .skills{display:flex;flex-wrap:wrap;gap:12px}
+  .skill{padding:10px 18px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:.95rem;transition:border-color .2s}
+  .skill:hover{border-color:var(--accent)}
+
+  /* Projects */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-5px);border-color:var(--accent)}
+  .thumb{height:170px;display:grid;place-items:center;font-family:"Space Grotesk";font-size:1.4rem;font-weight:700;color:rgba(255,255,255,.9)}
+  .t1{background:linear-gradient(135deg,#7c5cff,#3b82f6)}
+  .t2{background:linear-gradient(135deg,#0ea5e9,#22d3ee)}
+  .t3{background:linear-gradient(135deg,#f43f5e,#f59e0b)}
+  .card-body{padding:22px;display:flex;flex-direction:column;flex:1}
+  .card h3{font-size:1.2rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.95rem;margin-bottom:16px;flex:1}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .chip{font-size:.75rem;padding:4px 10px;border-radius:99px;background:var(--bg2);color:var(--accent2)}
+  .links{display:flex;gap:18px;font-size:.9rem}
+  .links a{color:var(--text);border-bottom:1px solid var(--accent)}
+
+  /* Contact */
+  .contact{text-align:center;background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:64px 24px}
+  .contact h2{margin-bottom:14px}
+  .contact p{color:var(--muted);margin:0 auto 30px;max-width:480px}
+  .socials{display:flex;justify-content:center;gap:14px;margin-top:26px;flex-wrap:wrap}
+  .socials a{padding:10px 18px;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:.9rem}
+  .socials a:hover{color:var(--text);border-color:var(--accent)}
+
+  footer{text-align:center;color:var(--muted);font-size:.85rem;padding:40px 0}
+
+  @media(max-width:760px){
+    nav ul{display:none}
+    .about{grid-template-columns:1fr}
+    .hero{padding:80px 0 60px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">umar<span>.</span>dev</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tag"><span class="dot"></span>Available for freelance work</div>
+    <h1>Hi, I'm Umar Amjad.<br><span class="grad">I build for the web.</span></h1>
+    <p>A web developer who builds fast, responsive and modern websites, from clean landing pages to full web apps.</p>
+    <div class="btns">
+      <a href="#projects" class="btn btn-main">View my work</a>
+      <a href="mailto:contact.umaramjad@gmail.com" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="label">About me</div>
+    <h2>Turning ideas into working websites</h2>
+    <div class="about">
+      <div>
+        <p>I'm a web developer from Pakistan who enjoys building websites that look good, load fast and work well on every screen size.</p>
+        <p>I care about clean code, simple design and a smooth experience for the people using what I build. I'm always learning new tools and taking on new projects.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>10+</b><span>Projects built</span></div>
+        <div class="stat"><b>2+</b><span>Years coding</span></div>
+        <div class="stat"><b>100%</b><span>Responsive</span></div>
+        <div class="stat"><b>24h</b><span>Reply time</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="label">Skills</div>
+    <h2>Tools I work with</h2>
+    <div class="skills">
+      <span class="skill">HTML5</span>
+      <span class="skill">CSS3</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">React</span>
+      <span class="skill">Tailwind CSS</span>
+      <span class="skill">Bootstrap</span>
+      <span class="skill">Node.js</span>
+      <span class="skill">WordPress</span>
+      <span class="skill">Git &amp; GitHub</span>
+      <span class="skill">Responsive Design</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="label">Projects</div>
+    <h2>Selected work</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="thumb t1">E-Commerce Store</div>
+        <div class="card-body">
+          <h3>E-Commerce Store</h3>
+          <p>An online shop with a product catalog, cart and checkout flow, built to be fast on mobile.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">Tailwind</span><span class="chip">JavaScript</span></div>
+          <div class="links"><a href="#">Live demo</a><a href="#">Code</a></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb t2">Business Landing</div>
+        <div class="card-body">
+          <h3>Business Landing Page</h3>
+          <p>A clean, responsive landing page for a local business, with a contact form and smooth animations.</p>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+          <div class="links"><a href="#">Live demo</a><a href="#">Code</a></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb t3">Weather App</div>
+        <div class="card-body">
+          <h3>Weather App</h3>
+          <p>Search any city to see current weather and a 5-day forecast, using a live weather API.</p>
+          <div class="chips"><span class="chip">JavaScript</span><span class="chip">API</span><span class="chip">CSS</span></div>
+          <div class="links"><a href="#">Live demo</a><a href="#">Code</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="label">Contact</div>
+      <h2>Let's work together</h2>
+      <p>Have a project in mind or need a website? Send me a message and I'll get back to you within a day.</p>
+      <a href="mailto:contact.umaramjad@gmail.com" class="btn btn-main">contact.umaramjad@gmail.com</a>
+      <div class="socials">
+        <a href="https://github.com/umaramjad-web" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="y"></span> Umar Amjad. Built by hand and hosted free on GitHub Pages.</footer>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
