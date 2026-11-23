@@ -91,6 +91,41 @@
   .socials a{padding:10px 18px;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:.9rem}
   .socials a:hover{color:var(--text);border-color:var(--accent)}
 
+  /* Reviews marquee */
+  .marquee{overflow:hidden;margin-top:10px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .track{display:flex;gap:22px;width:max-content;animation:scroll 40s linear infinite;padding:6px 0}
+  .marquee:hover .track,.marquee:active .track{animation-play-state:paused}
+  @keyframes scroll{to{transform:translateX(calc(-50% - 11px))}}
+  .review{width:360px;flex-shrink:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column}
+  .stars{color:#fbbf24;letter-spacing:2px;margin-bottom:12px}
+  .review q{color:var(--text);font-size:.98rem;flex:1;margin-bottom:18px;quotes:"“" "”"}
+  .who{display:flex;align-items:center;gap:12px}
+  .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#0b0d12;flex-shrink:0}
+  .who b{display:block;font-size:.95rem}
+  .who span{color:var(--muted);font-size:.82rem}
+  .src{margin-left:auto;font-size:.72rem;color:#1dbf73;border:1px solid rgba(29,191,115,.4);padding:3px 9px;border-radius:99px;white-space:nowrap}
+  @media (prefers-reduced-motion:reduce){.track{animation:none}.marquee{overflow-x:auto}}
+
+  /* Review form */
+  .form-box{max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px}
+  .form-box h2{text-align:center}
+  .form-box .sub{text-align:center;margin:0 auto 28px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:.9rem;color:var(--muted);margin-bottom:8px}
+  .field input,.field textarea{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--text);font:inherit;font-size:.95rem}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+  .field textarea{min-height:120px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .rate{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:4px}
+  .rate input{position:absolute;opacity:0;width:0}
+  .rate label{font-size:1.9rem;color:#3a4052;cursor:pointer;margin:0;line-height:1}
+  .rate input:checked ~ label,.rate label:hover,.rate label:hover ~ label{color:#fbbf24}
+  .rate input:focus-visible + label{outline:2px solid var(--accent);border-radius:4px}
+  .form-box .btn{width:100%;border:0;cursor:pointer;font:inherit;font-weight:500;font-size:1rem}
+  .note{text-align:center;color:var(--muted);font-size:.82rem;margin-top:14px}
+  .thanks{display:none;text-align:center;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.4);color:#86efac;border-radius:12px;padding:14px;margin-bottom:22px}
+  .thanks.show{display:block}
+
   footer{text-align:center;color:var(--muted);font-size:.85rem;padding:40px 0}
 
   @media(max-width:760px){
@@ -98,6 +133,9 @@
     .about{grid-template-columns:1fr}
     .hero{padding:80px 0 60px}
     .grid{grid-template-columns:1fr}
+    .review{width:290px}
+    .row2{grid-template-columns:1fr}
+    .form-box{padding:26px 20px}
   }
 </style>
 </head>
@@ -110,6 +148,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#reviews">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -118,8 +157,8 @@
 <header class="hero">
   <div class="wrap">
     <div class="tag"><span class="dot"></span>Available for new projects</div>
-    <h1>Hi, I'm Umar Amjad.<br><span class="grad">I build Shopify stores that sell.</span></h1>
-    <p>Shopify and web developer. I design, build and redesign online stores, from dropshipping shops to fully branded e-commerce sites.</p>
+    <h1>Hi, I'm Umar Amjad.<br><span class="grad">I build Websites &amp; Ecommerce Stores that sell.</span></h1>
+    <p>Shopify Store and web developer. I design, build and redesign online stores, from dropshipping shops to fully branded e-commerce sites.</p>
     <div class="btns">
       <a href="#projects" class="btn btn-main">View my work</a>
       <a href="mailto:contact.umaramjad@gmail.com" class="btn btn-ghost">Hire me</a>
@@ -137,7 +176,7 @@
         <p>Whether you need a new store from scratch, a dropshipping store ready to launch, or a redesign of your current site, I'll make it look professional, work on every device and be easy for your customers to shop.</p>
       </div>
       <div class="stats">
-        <div class="stat"><b>6+</b><span>Stores delivered</span></div>
+        <div class="stat"><b>200+</b><span>Websites delivered</span></div>
         <div class="stat"><b>4+</b><span>Years experience</span></div>
         <div class="stat"><b>100%</b><span>Mobile responsive</span></div>
         <div class="stat"><b>24h</b><span>Reply time</span></div>
@@ -167,11 +206,63 @@
   </div>
 </section>
 
+<section id="reviews">
+  <div class="wrap">
+    <div class="label">Customer feedback</div>
+    <h2>What my clients say</h2>
+    <p class="sub">Real reviews from clients I've worked with on Fiverr.</p>
+  </div>
+  <div class="marquee"><div class="track" id="track"></div></div>
+</section>
+
+<section id="feedback">
+  <div class="wrap">
+    <div class="form-box">
+      <div class="label" style="text-align:center">Leave a review</div>
+      <h2>Worked with me? Share your feedback</h2>
+      <p class="sub">No login needed. Just your name, a rating and a few words.</p>
+      <div class="thanks" id="thanks">Thank you! Your review has been sent. It will appear here once it's approved.</div>
+      <form action="https://formsubmit.co/contact.umaramjad@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New review from your portfolio site">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://umaramjad-web.github.io/#thanks">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row2">
+          <div class="field">
+            <label for="f-name">Your name *</label>
+            <input id="f-name" type="text" name="name" required maxlength="60" placeholder="e.g. John Smith">
+          </div>
+          <div class="field">
+            <label for="f-country">Country</label>
+            <input id="f-country" type="text" name="country" maxlength="40" placeholder="e.g. United Kingdom">
+          </div>
+        </div>
+        <div class="field">
+          <label>Your rating *</label>
+          <div class="rate">
+            <input type="radio" id="r5" name="rating" value="5 stars" required><label for="r5" title="5 stars">★</label>
+            <input type="radio" id="r4" name="rating" value="4 stars"><label for="r4" title="4 stars">★</label>
+            <input type="radio" id="r3" name="rating" value="3 stars"><label for="r3" title="3 stars">★</label>
+            <input type="radio" id="r2" name="rating" value="2 stars"><label for="r2" title="2 stars">★</label>
+            <input type="radio" id="r1" name="rating" value="1 star"><label for="r1" title="1 star">★</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-review">Your review *</label>
+          <textarea id="f-review" name="review" required maxlength="600" placeholder="How was your experience working with me?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-main">Submit review</button>
+        <p class="note">Reviews are checked before they're published on this page.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
     <div class="contact">
       <div class="label">Contact</div>
-      <h2>Need a Shopify store?</h2>
+      <h2>Need a Website or Ecommerce store?</h2>
       <p>Want a new store, a dropshipping store or a redesign of your current site? Send me a message and I'll get back to you within a day.</p>
       <a href="mailto:contact.umaramjad@gmail.com" class="btn btn-main">contact.umaramjad@gmail.com</a>
     </div>
@@ -243,6 +334,33 @@ grid.addEventListener('click', e=>{ const b = e.target.closest('[data-i]'); if(b
 document.getElementById('lb-close').onclick = closeLb;
 lb.addEventListener('click', e=>{ if(e.target === lb || e.target === lbScroll) closeLb(); });
 document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLb(); });
+// Reviews: add new approved reviews to this list
+const reviews = [
+  { name:"ludmila_25", country:"Brazil", text:"This was my first purchase with Umar, and it exceeded my expectations. They responded very quickly, delivered fast, provided excellent support, and installed the theme on my store. I will definitely buy from them again.", src:"Fiverr" },
+  { name:"seosimpel", country:"Netherlands", text:"Very good!!!!! AAA++++ seller, wil order again!", src:"Fiverr" },
+  { name:"stretch1of1", country:"United Kingdom", text:"supportive with issue I had. Very efficient", src:"Fiverr" },
+  { name:"ccmedia24", country:"Germany", text:"Thank you great job", src:"Fiverr" }
+];
+const colors = ["#a78bfa","#67e8f9","#86efac","#fca5a5","#fcd34d","#f9a8d4"];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const card = (r,i) => `
+  <article class="review">
+    <div class="stars" aria-label="${r.stars||5} out of 5 stars">${'★'.repeat(r.stars||5)}</div>
+    <q>${esc(r.text)}</q>
+    <div class="who">
+      <div class="av" style="background:${colors[i%colors.length]}">${esc(r.name[0].toUpperCase())}</div>
+      <div><b>${esc(r.name)}</b><span>${esc(r.country)}</span></div>
+      ${r.src ? `<span class="src">via ${esc(r.src)}</span>` : ''}
+    </div>
+  </article>`;
+const once = reviews.map(card).join('');
+const track = document.getElementById('track');
+track.innerHTML = once + once.replace(/<article class="review">/g,'<article class="review" aria-hidden="true">');
+
+if (location.hash === '#thanks') {
+  const t = document.getElementById('thanks'); t.classList.add('show');
+  document.getElementById('feedback').scrollIntoView();
+}
 document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 </body>
