@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umar Amjad — Shopify &amp; Web Developer</title>
+<meta name="description" content="Umar Amjad is a Shopify and web developer who designs and builds Shopify stores, dropshipping stores and websites for clients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d12; --bg2:#12151d; --card:#161a24; --line:#232838;
+    --text:#e8eaf0; --muted:#9aa1b2; --accent:#7c5cff; --accent2:#22d3ee; --shop:#95bf47;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.15}
+
+  nav{position:sticky;top:0;z-index:10;background:rgba(11,13,18,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:"Space Grotesk";font-weight:700;font-size:1.2rem}
+  .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav ul a{color:var(--muted);font-size:.95rem;transition:color .2s}
+  nav ul a:hover{color:var(--text)}
+
+  .hero{padding:110px 0 90px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;width:520px;height:520px;right:-120px;top:-80px;
+    background:radial-gradient(circle,rgba(124,92,255,.35),transparent 65%);filter:blur(20px);z-index:-1}
+  .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:.85rem;margin-bottom:24px}
+  .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e}
+  .hero h1{font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:20px}
+  .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);font-size:1.15rem;max-width:600px;margin-bottom:36px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:500;transition:transform .2s,background .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-main{background:var(--accent);color:#fff}
+  .btn-ghost{border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--card)}
+
+  section{padding:80px 0}
+  .label{color:var(--accent2);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+  section h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:14px}
+  .sub{color:var(--muted);margin-bottom:40px;max-width:600px}
+
+  .about{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start;margin-top:26px}
+  .about p{color:var(--muted);margin-bottom:16px;font-size:1.05rem}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .stat b{font-family:"Space Grotesk";font-size:2rem;display:block}
+  .stat span{color:var(--muted);font-size:.9rem}
+
+  .skills{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .skill{padding:10px 18px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:.95rem;transition:border-color .2s}
+  .skill:hover{border-color:var(--accent)}
+  .skill.hl{border-color:rgba(149,191,71,.5);color:#c5e39a}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-5px);border-color:var(--accent)}
+  .thumb{position:relative;aspect-ratio:800/520;overflow:hidden;cursor:zoom-in;background:#fff;border:0;padding:0;display:block;width:100%}
+  .thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+  .card:hover .thumb img{transform:scale(1.04)}
+  .thumb .view{position:absolute;inset:auto 12px 12px auto;background:rgba(11,13,18,.85);color:#fff;font-size:.8rem;padding:6px 12px;border-radius:99px;opacity:0;transition:opacity .25s}
+  .card:hover .view{opacity:1}
+  .card-body{padding:22px;display:flex;flex-direction:column;flex:1}
+  .niche{font-size:.75rem;color:var(--shop);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+  .card h3{font-size:1.2rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.95rem;margin-bottom:16px;flex:1}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .chip{font-size:.75rem;padding:4px 10px;border-radius:99px;background:var(--bg2);color:var(--accent2)}
+  .card .more{background:none;border:0;color:var(--text);font:inherit;font-size:.9rem;cursor:pointer;align-self:flex-start;border-bottom:1px solid var(--accent);padding:0}
+
+  /* Lightbox */
+  .lb{position:fixed;inset:0;background:rgba(5,6,10,.92);z-index:50;display:none;flex-direction:column}
+  .lb.open{display:flex}
+  .lb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line)}
+  .lb-top h3{font-size:1rem}
+  .lb-close{background:var(--card);border:1px solid var(--line);color:var(--text);width:38px;height:38px;border-radius:10px;font-size:1.2rem;cursor:pointer}
+  .lb-scroll{overflow-y:auto;flex:1;padding:24px}
+  .lb-scroll img{display:block;width:100%;max-width:1000px;margin:0 auto;border-radius:8px}
+
+  .contact{text-align:center;background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:64px 24px}
+  .contact h2{margin-bottom:14px}
+  .contact p{color:var(--muted);margin:0 auto 30px;max-width:520px}
+  .socials{display:flex;justify-content:center;gap:14px;margin-top:26px;flex-wrap:wrap}
+  .socials a{padding:10px 18px;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:.9rem}
+  .socials a:hover{color:var(--text);border-color:var(--accent)}
+
+  footer{text-align:center;color:var(--muted);font-size:.85rem;padding:40px 0}
+
+  @media(max-width:760px){
+    nav ul{display:none}
+    .about{grid-template-columns:1fr}
+    .hero{padding:80px 0 60px}
+    .grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">umar<span>.</span>dev</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tag"><span class="dot"></span>Available for new projects</div>
+    <h1>Hi, I'm Umar Amjad.<br><span class="grad">I build Websites &amp; Ecommerce Stores that sell.</span></h1>
+    <p>Shopify Store and web developer. I design, build and redesign online stores, from dropshipping shops to fully branded e-commerce sites.</p>
+    <div class="btns">
+      <a href="#projects" class="btn btn-main">View my work</a>
+      <a href="mailto:contact.umaramjad@gmail.com" class="btn btn-ghost">Hire me</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="label">About me</div>
+    <h2>Online stores built around your brand</h2>
+    <div class="about">
+      <div>
+        <p>I'm a web developer from Pakistan who builds Shopify stores for clients. I've worked on fashion, beauty, gaming, gifts and many other niches.</p>
+        <p>Whether you need a new store from scratch, a dropshipping store ready to launch, or a redesign of your current site, I'll make it look professional, work on every device and be easy for your customers to shop.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>200+</b><span>Websites delivered</span></div>
+        <div class="stat"><b>4+</b><span>Years experience</span></div>
+        <div class="stat"><b>100%</b><span>Mobile responsive</span></div>
+        <div class="stat"><b>24h</b><span>Reply time</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="label">Skills</div>
+    <div class="skills">
+      <span class="skill">Shopify</span>
+      <span class="skill">WordPress</span>
+      <span class="skill">Google Ads</span>
+      <span class="skill">SEO</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="label">Projects</div>
+    <h2>Selected work</h2>
+    <p class="sub">Click any project to see the full store design.</p>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="label">Contact</div>
+      <h2>Need a Website or Ecommerce store?</h2>
+      <p>Want a new store, a dropshipping store or a redesign of your current site? Send me a message and I'll get back to you within a day.</p>
+      <a href="mailto:contact.umaramjad@gmail.com" class="btn btn-main">contact.umaramjad@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="y"></span> Umar Amjad. All rights reserved.</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <div class="lb-top">
+    <h3 id="lb-title"></h3>
+    <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+  </div>
+  <div class="lb-scroll" id="lb-scroll"><img id="lb-img" alt=""></div>
+</div>
+
+<script>
+const projects = [
+  { img:"nails", niche:"Beauty · Nails", title:"Nail Brand Shopify Store",
+    desc:"A complete Shopify store for a client in the nail niche, with an elegant layout, featured products and an About section that tells the brand's story.",
+    tags:["Shopify","Store Setup","Beauty"] },
+  { img:"gaming", niche:"Gaming · Electronics", title:"Gaming Gear Store Redesign",
+    desc:"A redesigned store for a client selling gaming gear: a bold new look, shop-by-category and brand sections, and clear product listings.",
+    tags:["Shopify","Redesign","Electronics"] },
+  { img:"beauty", niche:"Skincare · Fragrance", title:"Skincare & Fragrance Website",
+    desc:"A clean, modern Shopify website for a beauty brand, with category highlights, new arrivals, a before-and-after slider and an FAQ.",
+    tags:["Shopify","Web Design","Beauty"] },
+  { img:"kawaii", niche:"Gifts · Collectibles", title:"Kawaii Dropshipping Store",
+    desc:"A colorful dropshipping store for plushies, stationery and collectibles, ready to launch and sell from day one.",
+    tags:["Shopify","Dropshipping","Gifts"] },
+  { img:"mugs", niche:"Print on Demand · Mugs", title:"Mug Store on a Premium Theme",
+    desc:"A Shopify store built on a premium theme for a client selling custom mugs, with hot-selling products, categories and a newsletter signup.",
+    tags:["Shopify","Premium Theme","POD"] },
+  { img:"fashion", niche:"Fashion · Accessories", title:"Multi-Niche Fashion Store",
+    desc:"A large store design for a client selling jewelry, sunglasses, bags and accessories, with collection tabs, featured product blocks and sale badges.",
+    tags:["Shopify","Store Design","Fashion"] }
+];
+
+const grid = document.getElementById('grid');
+projects.forEach((p,i)=>{
+  const el = document.createElement('article');
+  el.className = 'card';
+  el.innerHTML = `
+    <button class="thumb" data-i="${i}" aria-label="View full design of ${p.title}">
+      <img src="${p.img}-thumb.jpg" alt="${p.title} homepage" loading="lazy">
+      <span class="view">View full design ↗</span>
+    </button>
+    <div class="card-body">
+      <div class="niche">${p.niche}</div>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <div class="chips">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+      <button class="more" data-i="${i}">View full design →</button>
+    </div>`;
+  grid.appendChild(el);
+});
+
+const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'),
+      lbTitle = document.getElementById('lb-title'), lbScroll = document.getElementById('lb-scroll');
+function openLb(i){
+  const p = projects[i];
+  lbImg.src = p.img + '.jpg'; lbImg.alt = p.title + ' full page design';
+  lbTitle.textContent = p.title;
+  lbScroll.scrollTop = 0;
+  lb.classList.add('open'); document.body.style.overflow = 'hidden';
+}
+function closeLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+grid.addEventListener('click', e=>{ const b = e.target.closest('[data-i]'); if(b) openLb(+b.dataset.i); });
+document.getElementById('lb-close').onclick = closeLb;
+lb.addEventListener('click', e=>{ if(e.target === lb || e.target === lbScroll) closeLb(); });
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLb(); });
+document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
